@@ -1,4 +1,4 @@
-import 'package:cr_rewards_flutter/screens/landing_screens.dart/landing_screen.dart';
+import 'package:cr_rewards_flutter/views/screens/landing_screens/landing_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
