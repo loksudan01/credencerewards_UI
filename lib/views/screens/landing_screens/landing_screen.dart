@@ -1,3 +1,4 @@
+import 'package:cr_rewards_flutter/views/responsive_layout.dart';
 import 'package:cr_rewards_flutter/views/screens/landing_screens/sections/body_section.dart';
 import 'package:cr_rewards_flutter/views/screens/landing_screens/sections/menu_bar_section.dart';
 import 'package:cr_rewards_flutter/views/screens/landing_screens/sections/top_bar_section.dart';
@@ -13,13 +14,18 @@ class LandingScreen extends StatelessWidget {
         child: NestedScrollView(
           floatHeaderSlivers: false,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            const TopBarSection(),
-            MenuBarSecion(),
+            ResponsiveLayout.isDesktop(context)
+                ? const TopBarSection()
+                : const SliverToBoxAdapter(child: SizedBox.shrink()),
+            ResponsiveLayout.isDesktop(context)
+                ? MenuBarSecion()
+                : const MobileMenuBarSection(),
           ],
           body: const BodySecion(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: 'Cookies Settings',
         onPressed: () {},
         child: const Icon(Icons.shield),
       ),

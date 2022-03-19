@@ -97,3 +97,44 @@ class MenuBarSecion extends StatelessWidget {
     );
   }
 }
+
+
+
+class MobileMenuBarSection extends StatelessWidget {
+  const MobileMenuBarSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      elevation: 0.0,
+      pinned: true,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      floating: true,
+      // snap: true,
+      centerTitle: false,
+      leading: Image.asset(
+        'assets/logo.png',
+        height: 30,
+      ),
+      title: const Text('CR Rewards',
+          style: TextStyle(
+              color: Colors.orange,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic)),
+      actions: [
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search,
+              color: Colors.grey,
+            )),
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.black,
+            )),
+      ],
+    );
+  }
+}
