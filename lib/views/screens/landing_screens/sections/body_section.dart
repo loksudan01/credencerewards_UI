@@ -16,7 +16,7 @@ class BodySecion extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: ResponsiveLayout.isDesktop(context) ? 200 : 15),
             child: Text(
-              'Rewards, Incentives, Benefits & Payouts Infrastructure for Businesses',
+              "Digital gift cards for everyone, Pick your card, personalise it and we'll take care of the rest!",
               style: TextStyle( 
                 fontSize: ResponsiveLayout.isDesktop(context) ? 50 : 30,
                 fontWeight: FontWeight.bold,
@@ -29,7 +29,7 @@ class BodySecion extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: ResponsiveLayout.isDesktop(context) ? 300 : 15),
             child: const Text(
-              "Thousands of businesses of all sizes, from start-ups to large enterprises, use Xoxoday's business currency to send rewards, perks, incentives, & disburse payouts.",
+              "We've got gift cards for every celebration, from birthdays, mother's day, anniversaries, weddings, baby showers and more",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.normal,

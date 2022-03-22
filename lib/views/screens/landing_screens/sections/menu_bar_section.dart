@@ -1,30 +1,34 @@
+import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:cr_rewards_flutter/views/widgets/button_widgets.dart';
 import 'package:flutter/material.dart';
 
 class MenuBarSecion extends StatelessWidget {
   MenuBarSecion({Key? key}) : super(key: key);
 
-  final GlobalKey menuKey = GlobalKey();
+  // final GlobalKey menuKey = GlobalKey();
 
-  showMenus(BuildContext context) async {
-    final render = menuKey.currentContext!.findRenderObject() as RenderBox;
-    await showMenu(
-      context: context,
-      position: RelativeRect.fromLTRB(
-          render.localToGlobal(Offset.zero).dx,
-          render.localToGlobal(Offset.zero).dy + 50,
-          double.infinity,
-          double.infinity),
-      items: [
-        const PopupMenuItem(
-          child: Text("New User"),
-        ),
-        const PopupMenuItem(
-          child: Text("Existing Users"),
-        ),
-      ],
-    );
-  }
+  // showMenus(BuildContext context) async {
+  //   final render = menuKey.currentContext!.findRenderObject() as RenderBox;
+  //   await showMenu(
+  //     context: context,
+  //     position: RelativeRect.fromLTRB(
+  //         render.localToGlobal(Offset.zero).dx,
+  //         render.localToGlobal(Offset.zero).dy + 50,
+  //         double.infinity,
+  //         double.infinity),
+  //     items: [
+  //       PopupMenuItem(
+  //         child: const Text("New User"),
+  //         onTap: () {
+  //           Navigator.pushNamed(context, AppRoutes.loginScreen);
+  //         },
+  //       ),
+  //       const PopupMenuItem(
+  //         child: Text("Existing Users"),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,13 +76,17 @@ class MenuBarSecion extends StatelessWidget {
           const Spacer(),
           Row(
             children: [
-              MouseRegion(
-                key: menuKey,
-                onHover: (event) {
-                  showMenus(context);
+              InkWell(
+                // key: menuKey,
+                // onHover: (event) {
+                //   showMenus(context);
+                // },
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.loginScreen);
+
                 },
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Text(
                     'Get Started',
                     style: TextStyle(

@@ -1,6 +1,8 @@
 import 'package:cr_rewards_flutter/views/screens/landing_screens/landing_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'controllers/routes.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      onGenerateRoute: (settings) => AppRouter.onGenerateRoute(settings),
       home: const LandingScreen(),
     );
   }
