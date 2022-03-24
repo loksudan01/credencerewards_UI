@@ -3,7 +3,7 @@ import 'package:cr_rewards_flutter/views/widgets/button_widgets.dart';
 import 'package:flutter/material.dart';
 
 class MenuBarSecion extends StatelessWidget {
-  MenuBarSecion({Key? key}) : super(key: key);
+  const MenuBarSecion({Key? key}) : super(key: key);
 
   // final GlobalKey menuKey = GlobalKey();
 

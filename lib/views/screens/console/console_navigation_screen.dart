@@ -1,7 +1,6 @@
 import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:cr_rewards_flutter/views/screens/console/dashboard_screen.dart';
 import 'package:cr_rewards_flutter/views/screens/console/orders_screen.dart/orders_screen_main.dart';
-import 'package:cr_rewards_flutter/views/screens/landing_screens/landing_screen.dart';
 import 'package:flutter/material.dart';
 
 class ConsoleNavigationScreen extends StatefulWidget {
