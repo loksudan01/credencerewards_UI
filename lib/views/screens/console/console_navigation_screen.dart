@@ -21,8 +21,8 @@ class _ConsoleNavigationScreenState extends State<ConsoleNavigationScreen> {
   @override
   void initState() {
     super.initState();
-    _isLoading = true;
-    auth();
+    // _isLoading = true;
+    // auth();
   }
 
   auth() async {

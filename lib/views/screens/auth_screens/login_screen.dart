@@ -98,28 +98,30 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                       child: ElevatedButton(
                     onPressed: (() async {
-                      EasyLoading.show(
-                          maskType: EasyLoadingMaskType.clear,
-                          status: 'Authenticating...');
-                      Map body = {
-                        "email_id": _emailController.text.trim(),
-                        "password": _passwordController.text.trim(),
-                      };
-                      var _response = await AuthApiControllers.adminLogin(body);
-                      EasyLoading.dismiss();
-                      if (_response["error"] == false) {
-                        SharedPreferences _prefs =
-                            await SharedPreferences.getInstance();
-                        _prefs.setString(
-                            'accessToken', _response["access_token"]);
-                        _prefs.setString(
-                            'userId', _response["profile_id"].toString());
-
                       Navigator.pushReplacementNamed(
-                            context, AppRoutes.consoleScreen);
-                      } else {
-                        EasyLoading.showError(_response["message"]);
-                      }
+                          context, AppRoutes.consoleScreen);
+                      // EasyLoading.show(
+                      //     maskType: EasyLoadingMaskType.clear,
+                      //     status: 'Authenticating...');
+                      // Map body = {
+                      //   "email_id": _emailController.text.trim(),
+                      //   "password": _passwordController.text.trim(),
+                      // };
+                      // var _response = await AuthApiControllers.adminLogin(body);
+                      // EasyLoading.dismiss();
+                      // if (_response["error"] == false) {
+                      //   SharedPreferences _prefs =
+                      //       await SharedPreferences.getInstance();
+                      //   _prefs.setString(
+                      //       'accessToken', _response["access_token"]);
+                      //   _prefs.setString(
+                      //       'userId', _response["profile_id"].toString());
+
+                      // Navigator.pushReplacementNamed(
+                      //       context, AppRoutes.consoleScreen);
+                      // } else {
+                      //   EasyLoading.showError(_response["message"]);
+                      // }
 
                     }),
                     child: const Text('Login'),
