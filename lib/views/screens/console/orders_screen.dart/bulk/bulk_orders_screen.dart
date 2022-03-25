@@ -1,6 +1,8 @@
 import 'package:cr_rewards_flutter/views/screens/console/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'bulk_add_new_screen.dart';
+
 class BulkOrdersScreen extends StatefulWidget {
   const BulkOrdersScreen({Key? key}) : super(key: key);
 
@@ -34,16 +36,21 @@ class _BulkOrdersScreenState extends State<BulkOrdersScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
+            children: [
+              const Text(
                 'Orders',
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22.0),
               ),
-              Text(
+              const Text(
                 'Bulk',
                 style: TextStyle(fontSize: 14.0),
               ),
-              Divider(),
+              ElevatedButton(
+                  onPressed: () {
+                   
+                  },
+                  child: const Text('New')),
+              const Divider(),
             ],
           ),
         ),
@@ -128,7 +135,6 @@ class _BulkOrdersScreenState extends State<BulkOrdersScreen> {
                             ElevatedButton(
                                 onPressed: () {}, child: const Text('View')),
                             const SizedBox(width: 5.0),
-
                             ElevatedButton(
                                 onPressed: () {}, child: const Text('Export'))
                           ],

@@ -1,6 +1,8 @@
-import 'package:cr_rewards_flutter/views/screens/console/orders_screen.dart/bulk_order_history_screen.dart';
-import 'package:cr_rewards_flutter/views/screens/console/orders_screen.dart/bulk_orders_screen.dart';
+import 'package:cr_rewards_flutter/views/screens/console/orders_screen.dart/bulk/bulk_order_history_screen.dart';
+import 'package:cr_rewards_flutter/views/screens/console/orders_screen.dart/bulk/bulk_orders_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'api_orders_screen.dart';
 
 class OrdersScreenMain extends StatefulWidget {
   const OrdersScreenMain({Key? key}) : super(key: key);
@@ -21,6 +23,9 @@ class _OrdersScreenMainState extends State<OrdersScreenMain> {
         break;
       case 1:
         _bodyChild = const BulkOrderHistoryScreen();
+        break;
+      case 2:
+        _bodyChild = const ApiOrdersScreen();
         break;
       default:
         _bodyChild = const BulkOrdersScreen();

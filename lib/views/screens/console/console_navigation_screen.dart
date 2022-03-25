@@ -1,3 +1,4 @@
+import 'package:cr_rewards_flutter/controllers/controllers.dart';
 import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:cr_rewards_flutter/views/screens/console/dashboard_screen.dart';
 import 'package:cr_rewards_flutter/views/screens/console/orders_screen.dart/orders_screen_main.dart';
@@ -12,9 +13,29 @@ class ConsoleNavigationScreen extends StatefulWidget {
 }
 
 class _ConsoleNavigationScreenState extends State<ConsoleNavigationScreen> {
+  bool _isLoading = false;
   int _selectedIndex = 0;
 
   Widget _bodyChild = const DashboardScreen();
+
+  @override
+  void initState() {
+    super.initState();
+    _isLoading = true;
+    auth();
+  }
+
+  auth() async {
+    bool isLoggedIn = await AppControllers.checkLogin();
+    if (!isLoggedIn) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, AppRoutes.loginScreen, (route) => false);
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   void _managebody() {
     switch (_selectedIndex) {
@@ -25,8 +46,7 @@ class _ConsoleNavigationScreenState extends State<ConsoleNavigationScreen> {
         _bodyChild = const OrdersScreenMain();
         break;
       case 4:
-        Navigator.pushNamedAndRemoveUntil(
-            context, AppRoutes.landingPage, (route) => false);
+        AppControllers.logout(context);
         break;
       default:
         _bodyChild = const DashboardScreen();
@@ -38,7 +58,11 @@ class _ConsoleNavigationScreenState extends State<ConsoleNavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Row(
+        child: _isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Row(
           children: [
             NavigationRail(
               selectedIndex: _selectedIndex,

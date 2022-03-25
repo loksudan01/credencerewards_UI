@@ -1,7 +1,8 @@
-import 'package:cr_rewards_flutter/views/screens/landing_screens/landing_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'controllers/routes.dart';
+import 'views/screens/console/console_navigation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +19,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      builder: EasyLoading.init(),
+
       onGenerateRoute: (settings) => AppRouter.onGenerateRoute(settings),
-      home: const LandingScreen(),
+      // home: const LandingScreen(),
+      home: const ConsoleNavigationScreen(),
+
     );
   }
 }
