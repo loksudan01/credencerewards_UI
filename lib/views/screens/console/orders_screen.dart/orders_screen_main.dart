@@ -3,6 +3,7 @@ import 'package:cr_rewards_flutter/views/screens/console/orders_screen.dart/bulk
 import 'package:flutter/material.dart';
 
 import 'api_orders_screen.dart';
+import 'offline_orders_screen.dart';
 
 class OrdersScreenMain extends StatefulWidget {
   const OrdersScreenMain({Key? key}) : super(key: key);
@@ -26,6 +27,9 @@ class _OrdersScreenMainState extends State<OrdersScreenMain> {
         break;
       case 2:
         _bodyChild = const ApiOrdersScreen();
+        break;
+      case 3:
+        _bodyChild = const OfflineOrdersScreen();
         break;
       default:
         _bodyChild = const BulkOrdersScreen();

@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AppControllers {
   static Future<bool> checkLogin() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    String? token = _prefs.getString('accessToken');
+    String? token = _prefs.getString('token');
     if (token != null) {
       return true;
     } else {
@@ -15,7 +15,7 @@ class AppControllers {
 
   static Future<String?> getToken() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    String? token = _prefs.getString('accessToken');
+    String? token = _prefs.getString('token');
     return token;
   }
 
@@ -53,4 +53,19 @@ class AppControllers {
           );
         });
   }
+}
+
+
+
+void formSubmitFunction(
+    {required GlobalKey<FormState> formKey,
+    required Function() submitFunction}) {
+  // final _formKey = GlobalKey<FormState>();
+  final isValid = formKey.currentState!.validate();
+  if (!isValid) {
+    return;
+  } else {
+    submitFunction();
+  }
+  formKey.currentState!.save();
 }

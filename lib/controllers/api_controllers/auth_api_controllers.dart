@@ -1,37 +1,34 @@
 import 'dart:convert';
+import 'dart:developer';
 
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+// import 'package:http/http.dart' as http;
 
 const String baseUrl =
     'credence-env.eba-tk4ufehw.us-east-1.elasticbeanstalk.com';
 
 class AuthApiControllers {
   static Future adminLogin(Map form) async {
-    var data;
-    // try {
-    var response = await http.post(
-        Uri.parse(
-            'http://credence-env.eba-tk4ufehw.us-east-1.elasticbeanstalk.com/Login/'),
-        body: json.encode(form),
-        headers: {
-          'Accept': 'application/json',
-          'Content-type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        });
 
-    debugPrint(response.body);
+    Response response = await Dio().post(
+      "http://13.127.218.220:8088/api/auth/login",
+      // data: form,
+      data: {"mobile": "4455445544", "password": "44444444"},
+    );
+
+    debugPrint("DATA::::---${response.data}");
+
     if (response.statusCode == 200) {
-      data = json.decode(response.body);
-      return data;
+      return response.data;
     } else {
-      data["error"] = true;
-      data["message"] = 'Wrong Password';
-      return data;
+
+      Fluttertoast.showToast(msg: 'Incorrect number or password');
+      return null;
     }
-    // } catch (e) {
-    //   rethrow;
-    // }
+   
   }
 
 

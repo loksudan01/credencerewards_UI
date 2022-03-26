@@ -1,7 +1,9 @@
+
 import 'package:cr_rewards_flutter/controllers/api_controllers/auth_api_controllers.dart';
+import 'package:cr_rewards_flutter/controllers/controllers.dart';
 import 'package:cr_rewards_flutter/controllers/routes.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,13 +15,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
 
   @override
   void dispose() {
     super.dispose();
-    _emailController.dispose();
+    _mobileController.dispose();
     _passwordController.dispose();
   }
 
@@ -49,23 +53,27 @@ class _LoginScreenState extends State<LoginScreen> {
               Form(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: TextFormField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
+                  controller: _mobileController,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  ],
 
                   validator: (input) {
-                    if (EmailValidator.validate(input!)) {
+                    if (input?.length == 10) {
                       return null;
                     } else {
-                      return 'Enter correct email';
+                      return 'Enter correct mobile';
                     }
                   },
                   decoration: const InputDecoration(
-                    labelText: 'Email Address',
+                    labelText: 'Mobile',
                   ),
                 ),
               ),
               const SizedBox(height: 25.0),
               Form(
+                key: _formKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: TextFormField(
                   controller: _passwordController,
@@ -74,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelText: 'Password',
                   ),
                   validator: (input) {
-                    if (input!.length < 8) {
+                    if (input!.length != 8) {
                       return 'Enter atleast 8 digit password';
                     } else {
                       return null;
@@ -97,33 +105,36 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Expanded(
                       child: ElevatedButton(
-                    onPressed: (() async {
-                      Navigator.pushReplacementNamed(
-                          context, AppRoutes.consoleScreen);
-                      // EasyLoading.show(
-                      //     maskType: EasyLoadingMaskType.clear,
-                      //     status: 'Authenticating...');
-                      // Map body = {
-                      //   "email_id": _emailController.text.trim(),
-                      //   "password": _passwordController.text.trim(),
-                      // };
-                      // var _response = await AuthApiControllers.adminLogin(body);
-                      // EasyLoading.dismiss();
-                      // if (_response["error"] == false) {
-                      //   SharedPreferences _prefs =
-                      //       await SharedPreferences.getInstance();
-                      //   _prefs.setString(
-                      //       'accessToken', _response["access_token"]);
-                      //   _prefs.setString(
-                      //       'userId', _response["profile_id"].toString());
+                    onPressed: (() {
+                      formSubmitFunction(
+                          formKey: _formKey,
+                          submitFunction: () async {
+                            Navigator.pushReplacementNamed(
+                                context, AppRoutes.consoleScreen);
+                            // EasyLoading.show(
+                            //     maskType: EasyLoadingMaskType.clear,
+                            //     status: 'Authenticating...');
+                            // Map body = {
+                            //   "mobile": _mobileController.text.trim(),
+                            //   "password": _passwordController.text.trim(),
+                            // };
+                            // var _response =
+                            //     await AuthApiControllers.adminLogin(body);
+                            // EasyLoading.dismiss();
+                            // if (_response != null) {
+                            //   SharedPreferences _prefs =
+                            //       await SharedPreferences.getInstance();
+                            //   _prefs.setString('token', _response["token"]);
+                            //   _prefs.setString(
+                            //       'userId', _response["_id"].toString());
 
-                      // Navigator.pushReplacementNamed(
-                      //       context, AppRoutes.consoleScreen);
-                      // } else {
-                      //   EasyLoading.showError(_response["message"]);
-                      // }
+                            //   Navigator.pushReplacementNamed(
+                            //       context, AppRoutes.consoleScreen);
+                            // }
+                          });
 
                     }),
+
                     child: const Text('Login'),
                   )),
                 ],

@@ -1,4 +1,3 @@
-import 'package:cr_rewards_flutter/views/screens/console/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class ApiOrdersScreen extends StatefulWidget {
@@ -11,7 +10,6 @@ class ApiOrdersScreen extends StatefulWidget {
 class _ApiOrdersScreenState extends State<ApiOrdersScreen> {
   @override
   Widget build(BuildContext context) {
-    final orientation = MediaQuery.of(context).orientation;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -27,6 +25,8 @@ class _ApiOrdersScreenState extends State<ApiOrdersScreen> {
                 'Api Orders',
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22.0),
               ),
+              const SizedBox(height: 20.0),
+
               ElevatedButton(onPressed: () {}, child: const Text('New')),
               const Divider(),
             ],

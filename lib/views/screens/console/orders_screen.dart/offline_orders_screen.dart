@@ -1,41 +1,32 @@
-
-
 import 'package:flutter/material.dart';
 
-class BulkOrderHistoryScreen extends StatefulWidget {
-  const BulkOrderHistoryScreen({Key? key}) : super(key: key);
+class OfflineOrdersScreen extends StatefulWidget {
+  const OfflineOrdersScreen({Key? key}) : super(key: key);
 
   @override
-  State<BulkOrderHistoryScreen> createState() => _BulkOrderHistoryScreenState();
+  State<OfflineOrdersScreen> createState() => _OfflineOrdersScreenState();
 }
 
-class _BulkOrderHistoryScreenState extends State<BulkOrderHistoryScreen> {
+class _OfflineOrdersScreenState extends State<OfflineOrdersScreen> {
   @override
   Widget build(BuildContext context) {
-    final orientation = MediaQuery.of(context).orientation;
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          padding: const EdgeInsets.all(25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-           SizedBox(height: 50.0),
-
-              Text(
-                'Orders',
+            children: [
+              const Text(
+                'Offline Orders',
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22.0),
               ),
-              Text(
-                'Flipkart Bulk',
-                style: TextStyle(fontSize: 14.0),
-              ),
-              SizedBox(height: 20.0),
-              Divider(),
+              const SizedBox(height: 20.0),
+              ElevatedButton(onPressed: () {}, child: const Text('New')),
+              const Divider(),
             ],
           ),
         ),
@@ -83,6 +74,9 @@ class _BulkOrderHistoryScreenState extends State<BulkOrderHistoryScreen> {
                           children: [
                             ElevatedButton(
                                 onPressed: () {}, child: const Text('View')),
+                            const SizedBox(width: 5.0),
+                            ElevatedButton(
+                                onPressed: () {}, child: const Text('Export'))
                           ],
                         ),
                       ),
@@ -98,7 +92,9 @@ class _BulkOrderHistoryScreenState extends State<BulkOrderHistoryScreen> {
                           children: [
                             ElevatedButton(
                                 onPressed: () {}, child: const Text('View')),
-                          
+                            const SizedBox(width: 5.0),
+                            ElevatedButton(
+                                onPressed: () {}, child: const Text('Export'))
                           ],
                         ),
                       ),
@@ -114,6 +110,9 @@ class _BulkOrderHistoryScreenState extends State<BulkOrderHistoryScreen> {
                           children: [
                             ElevatedButton(
                                 onPressed: () {}, child: const Text('View')),
+                            const SizedBox(width: 5.0),
+                            ElevatedButton(
+                                onPressed: () {}, child: const Text('Export'))
                           ],
                         ),
                       ),
@@ -129,6 +128,9 @@ class _BulkOrderHistoryScreenState extends State<BulkOrderHistoryScreen> {
                           children: [
                             ElevatedButton(
                                 onPressed: () {}, child: const Text('View')),
+                            const SizedBox(width: 5.0),
+                            ElevatedButton(
+                                onPressed: () {}, child: const Text('Export'))
                           ],
                         ),
                       ),

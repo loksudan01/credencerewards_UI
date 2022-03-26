@@ -45,11 +45,26 @@ class _BulkOrdersScreenState extends State<BulkOrdersScreen> {
                 'Bulk',
                 style: TextStyle(fontSize: 14.0),
               ),
+              const SizedBox(height: 20.0),
+
               ElevatedButton(
                   onPressed: () {
-                   
+                    showDialog<void>(
+                        barrierDismissible: false,
+                        barrierColor: Colors.transparent,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 50, vertical: 50),
+                              height: MediaQuery.of(context).size.height * 0.7,
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              child: const BulkAddNewScreen());
+                        });
                   },
                   child: const Text('New')),
+              const SizedBox(height: 20.0),
+
               const Divider(),
             ],
           ),
