@@ -18,7 +18,7 @@ class LandingScreen extends StatelessWidget {
                 ? const TopBarSection()
                 : const SliverToBoxAdapter(child: SizedBox.shrink()),
             ResponsiveLayout.isDesktop(context)
-                ? MenuBarSecion()
+                ? const MenuBarSecion()
                 : const MobileMenuBarSection(),
           ],
           body: const BodySecion(),

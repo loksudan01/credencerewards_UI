@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'controllers/routes.dart';
-import 'views/screens/console/console_navigation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +22,8 @@ class MyApp extends StatelessWidget {
 
       onGenerateRoute: (settings) => AppRouter.onGenerateRoute(settings),
       // home: const LandingScreen(),
-      home: const ConsoleNavigationScreen(),
+      initialRoute: AppRoutes.landingPage,
+      // home: const ConsoleNavigationScreen(),
 
     );
   }

@@ -144,10 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 'Credence Rewards © ${DateTime.now().year}',
                 style: const TextStyle(fontSize: 12.0, color: Colors.grey),
               ),
-              const Text(
-                'Developed by @swarup13',
-                style: TextStyle(fontSize: 10.0, color: Colors.grey),
-              )
+              
             ],
           ),
         ),

@@ -1,12 +1,15 @@
 import 'package:cr_rewards_flutter/views/screens/auth_screens/login_screen.dart';
 import 'package:cr_rewards_flutter/views/screens/console/console_navigation_screen.dart';
 import 'package:cr_rewards_flutter/views/screens/landing_screens/landing_screen.dart';
+import 'package:cr_rewards_flutter/views/screens/products/axis/axis_main_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
   static const landingPage = '/';
   static const loginScreen = '/login';
   static const consoleScreen = '/console';
+  static const axis = '/axis';
+
 }
 
 class AppRouter {
@@ -29,6 +32,12 @@ class AppRouter {
       case AppRoutes.loginScreen:
         return MaterialPageRoute<dynamic>(
           builder: (_) => const LoginScreen(),
+          settings: settings,
+          fullscreenDialog: true,
+        );
+      case AppRoutes.axis:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => const AxisMainScreen(),
           settings: settings,
           fullscreenDialog: true,
         );
