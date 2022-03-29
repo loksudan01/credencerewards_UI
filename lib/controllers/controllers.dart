@@ -1,6 +1,7 @@
 import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppControllers {
   static Future<bool> checkLogin() async {
@@ -68,4 +69,17 @@ void formSubmitFunction(
     submitFunction();
   }
   formKey.currentState!.save();
+}
+
+
+void launchURL(url) async {
+  if (!await launch(url)) throw 'Could not launch $url';
+}
+
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
+  }
 }

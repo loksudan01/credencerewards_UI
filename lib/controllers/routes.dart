@@ -37,7 +37,7 @@ class AppRouter {
         );
       case AppRoutes.axis:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => const AxisMainScreen(),
+          builder: (_) =>  AxisMainScreen(),
           settings: settings,
           fullscreenDialog: true,
         );

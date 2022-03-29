@@ -1,11 +1,8 @@
 
-import 'package:cr_rewards_flutter/controllers/api_controllers/auth_api_controllers.dart';
 import 'package:cr_rewards_flutter/controllers/controllers.dart';
 import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

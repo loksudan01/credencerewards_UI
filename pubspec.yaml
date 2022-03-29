@@ -54,10 +54,16 @@ dependencies:
   # H
   # http: ^0.13.4
 
+  # M
+  mobile_scanner: ^1.0.0
+
   # S
   shared_preferences: ^2.0.13
 
   # T
+
+  # U
+  url_launcher: ^6.0.20
 
 
 
