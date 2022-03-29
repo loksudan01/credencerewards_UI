@@ -68,9 +68,8 @@ class MenuBarSecion extends StatelessWidget {
           Row(
             children: [
               HoverButtonTextWidget(
-                  title: 'Axis',
+                  title: 'Features',
                   onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.axis);
                   }),
               HoverButtonTextWidget(title: 'Pricing', onTap: () {}),
               HoverButtonTextWidget(title: 'About Us', onTap: () {}),

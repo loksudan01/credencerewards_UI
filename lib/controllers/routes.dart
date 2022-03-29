@@ -8,7 +8,7 @@ class AppRoutes {
   static const landingPage = '/';
   static const loginScreen = '/login';
   static const consoleScreen = '/console';
-  static const axis = '/axis';
+  static const axis = '/axis-bank';
 
 }
 
