@@ -64,6 +64,7 @@ dependencies:
 
   # U
   url_launcher: ^6.0.20
+  url_strategy: ^0.2.0
 
 
 

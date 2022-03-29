@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'controllers/routes.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
