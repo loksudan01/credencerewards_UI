@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "credence-rewards-flutter"
-  }
+    "default": "credence-rewards-flutter",
+    "stable": "credence-rewards-2"
+  },
+  "targets": {}
 }
