@@ -1,4 +1,5 @@
 import 'package:cr_rewards_flutter/views/responsive_layout.dart';
+import 'package:cr_rewards_flutter/views/widgets/common_sections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -127,36 +128,12 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    Align(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          const Text(
-                            'Powered by ',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 3.0),
-                            child: Image.asset(
-                              'assets/logo.png',
-                              height: 50,
-                            ),
-                          ),
-                        ],
-                      ),
-                      alignment: Alignment.centerRight,
-                    ),
+                    const PowerdByRowText()
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 10),
-            Text(
-              'Copyrights © ${DateTime.now().year}. All Rights Reserved by Credence Rewards',
-              style: const TextStyle(fontSize: 12.0, color: Colors.grey),
-              textAlign: TextAlign.center,
-            ),
+            const CopyRightText(),
           ],
         ),
       ),

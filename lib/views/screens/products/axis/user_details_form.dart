@@ -1,7 +1,8 @@
+import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:flutter/material.dart';
 
 import 'axis_main_screen.dart';
-import 'success_message.dart';
+import '../messages/success_message.dart';
 
 class UserDetailsForm extends StatelessWidget {
   const UserDetailsForm({Key? key}) : super(key: key);
@@ -98,7 +99,10 @@ class UserDetailsForm extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) {
-                      return const SuccessMessageAxisScreen();
+                      return const PaymentSuccessMessageScreen(
+                        companyImage: 'assets/images/axis-bank.png',
+                        route: AppRoutes.axisBank,
+                      );
                     }));
                   },
                   style: TextButton.styleFrom(

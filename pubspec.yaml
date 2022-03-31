@@ -57,6 +57,12 @@ dependencies:
   # M
   mobile_scanner: ^1.0.0
 
+  # N
+  number_inc_dec: ^0.8.0
+
+  # R
+  razorpay_web: ^1.1.0
+
   # S
   shared_preferences: ^2.0.13
 

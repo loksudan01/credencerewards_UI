@@ -1,21 +1,22 @@
-import 'package:cr_rewards_flutter/controllers/controllers.dart';
-import 'package:cr_rewards_flutter/controllers/routes.dart';
-import 'package:cr_rewards_flutter/views/screens/products/messages/success_message.dart';
-import 'package:cr_rewards_flutter/views/widgets/common_sections.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'axis_main_screen.dart';
+import 'package:cr_rewards_flutter/controllers/controllers.dart';
+import '../../../../controllers/routes.dart';
+import '../../../widgets/common_sections.dart';
+import '../axis/axis_main_screen.dart';
+import 'lifestyle_quantity_screen.dart';
 
-class ChooseProvider extends StatefulWidget {
-  const ChooseProvider({Key? key}) : super(key: key);
+class LifestyleMainPage extends StatefulWidget {
+  const LifestyleMainPage({Key? key}) : super(key: key);
 
   @override
-  State<ChooseProvider> createState() => _ChooseProviderState();
+  State<LifestyleMainPage> createState() => _LifestyleMainPageState();
 }
 
-class _ChooseProviderState extends State<ChooseProvider> {
+class _LifestyleMainPageState extends State<LifestyleMainPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -35,14 +36,13 @@ class _ChooseProviderState extends State<ChooseProvider> {
     return WillPopScope(
       onWillPop: () async {
         Navigator.pushNamedAndRemoveUntil(
-            context, AppRoutes.axisBank, (Route<dynamic> route) => false);
+            context, AppRoutes.lifeStyle, (Route<dynamic> route) => false);
         return false;
       },
-      child: SingleChildScrollView(
-        controller: ScrollController(),
-        child: Container(
-          color: Colors.blueGrey.shade900,
-
+      child: Container(
+        color: Colors.blueGrey.shade900,
+        child: SingleChildScrollView(
+          controller: ScrollController(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -64,50 +64,16 @@ class _ChooseProviderState extends State<ChooseProvider> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/images/axis-bank.png',
+                        'assets/images/lifestyle.webp',
                         width: 200,
                       ),
                       const SizedBox(height: 30),
                       const Text(
-                        'Congratulations!',
+                        'Your Details',
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.bold,
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      const Text(
-                        'Please fill in the below details to receive your voucher.',
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 30),
-                      Stack(
-                        alignment: Alignment.topLeft,
-                        children: [
-                          Image.asset('assets/images/flipkart-card.png',
-                              width: 300),
-                          Positioned(
-                            top: 20,
-                            left: 10,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text('Gift Card Value',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 12.0)),
-                                Text('₹500',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 16.0)),
-                              ],
-                            ),
-                          )
-                        ],
                       ),
                       const SizedBox(height: 30),
                       TextFormField(
@@ -206,7 +172,6 @@ class _ChooseProviderState extends State<ChooseProvider> {
                               )
                             : null,
                       ),
-                     
                       const SizedBox(height: 30),
                       Container(
                         width: 150,
@@ -219,20 +184,23 @@ class _ChooseProviderState extends State<ChooseProvider> {
                         ),
                         child: TextButton(
                           onPressed: () {
-                            formSubmitFunction(
-                                formKey: _formKey,
-                                submitFunction: () {
-                                  if (_tcChecked) {
-                                    Navigator.pushReplacement(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return const PaymentSuccessMessageScreen(
-                                        companyImage:
-                                            'assets/images/axis-bank.png',
-                                        route: AppRoutes.axisBank,
-                                      );
-                                    }));
-                                  }
-                                });
+                            if (kDebugMode) {
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const LifeStyleQuantityScreen();
+                              }));
+                            } else {
+                              formSubmitFunction(
+                                  formKey: _formKey,
+                                  submitFunction: () {
+                                    if (_tcChecked) {
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const LifeStyleQuantityScreen();
+                                      }));
+                                    }
+                                  });
+                            }
                           },
                           style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -259,4 +227,3 @@ class _ChooseProviderState extends State<ChooseProvider> {
     );
   }
 }
-

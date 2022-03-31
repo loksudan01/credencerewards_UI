@@ -2,13 +2,16 @@ import 'package:cr_rewards_flutter/views/screens/auth_screens/login_screen.dart'
 import 'package:cr_rewards_flutter/views/screens/console/console_navigation_screen.dart';
 import 'package:cr_rewards_flutter/views/screens/landing_screens/landing_screen.dart';
 import 'package:cr_rewards_flutter/views/screens/products/axis/axis_main_screen.dart';
+import 'package:cr_rewards_flutter/views/screens/products/lifestyle/lifestyle_main_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
   static const landingPage = '/';
   static const loginScreen = '/login';
   static const consoleScreen = '/console';
-  static const axis = '/axis-bank';
+  static const axisBank = '/axis-bank';
+  static const lifeStyle = '/lifestyle';
+
 
 }
 
@@ -35,9 +38,15 @@ class AppRouter {
           settings: settings,
           fullscreenDialog: true,
         );
-      case AppRoutes.axis:
+      case AppRoutes.axisBank:
         return MaterialPageRoute<dynamic>(
-          builder: (_) =>  AxisMainScreen(),
+          builder: (_) => const AxisMainScreen(),
+          settings: settings,
+          fullscreenDialog: true,
+        );
+      case AppRoutes.lifeStyle:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => const LifestyleMainPage(),
           settings: settings,
           fullscreenDialog: true,
         );

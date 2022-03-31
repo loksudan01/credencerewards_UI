@@ -2,18 +2,21 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../controllers/routes.dart';
 import '../../../widgets/custom_clipper.dart';
 
-class SuccessMessageAxisScreen extends StatelessWidget {
-  const SuccessMessageAxisScreen({Key? key}) : super(key: key);
+class PaymentSuccessMessageScreen extends StatelessWidget {
+  final String companyImage;
+  final String route;
+  const PaymentSuccessMessageScreen(
+      {Key? key, required this.companyImage, required this.route})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
         Navigator.pushNamedAndRemoveUntil(
-            context, AppRoutes.axis, (Route<dynamic> route) => false);
+            context, route, (Route<dynamic> route) => false);
         return false;
       },
       child: Container(
@@ -37,7 +40,7 @@ class SuccessMessageAxisScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/axis-bank.png',
+                      companyImage,
                       width: 300,
                     ),
                     const SizedBox(height: 30),
