@@ -12,7 +12,6 @@ class BulkOrderHistoryScreen extends StatefulWidget {
 class _BulkOrderHistoryScreenState extends State<BulkOrderHistoryScreen> {
   @override
   Widget build(BuildContext context) {
-    final orientation = MediaQuery.of(context).orientation;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
