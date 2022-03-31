@@ -1,11 +1,11 @@
 import 'package:cr_rewards_flutter/controllers/controllers.dart';
 import 'package:cr_rewards_flutter/controllers/routes.dart';
-import 'package:cr_rewards_flutter/views/screens/products/messages/success_message.dart';
 import 'package:cr_rewards_flutter/views/widgets/common_sections.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../message_screens/success_message.dart';
 import 'axis_main_screen.dart';
 
 class ChooseProvider extends StatefulWidget {

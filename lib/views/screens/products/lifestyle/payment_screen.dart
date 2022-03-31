@@ -4,8 +4,9 @@ import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:razorpay_web/razorpay_web.dart';
 
-import '../messages/error_message.dart';
-import '../messages/success_message.dart';
+import '../message_screens/error_message.dart';
+import '../message_screens/success_message.dart';
+
 
 class PaymentWebScreen extends StatelessWidget {
   const PaymentWebScreen({Key? key}) : super(key: key);

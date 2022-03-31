@@ -1,8 +1,8 @@
 import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:flutter/material.dart';
 
+import '../message_screens/success_message.dart';
 import 'axis_main_screen.dart';
-import '../messages/success_message.dart';
 
 class UserDetailsForm extends StatelessWidget {
   const UserDetailsForm({Key? key}) : super(key: key);
