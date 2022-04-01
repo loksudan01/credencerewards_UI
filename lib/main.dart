@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       title: 'Credence Rewards - Digital gift cards for everyone',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        brightness: Brightness.light,
       ),
       builder: EasyLoading.init(),
 
