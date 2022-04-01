@@ -15,7 +15,9 @@ class PaymentWebScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return RazorpayWeb(
       rzpKey: 'rzp_live_eZygSOHhn3NsiW',
+      rzpSecret: 'yxY3lxgZrxQUN93D8bQ4cL6w',
       options: RzpOptions(
+        orderId: 'order_JE8sFwDfhFVqjR',
         amount: 100,
         name: "CREDENCE REWARDS",
         description: "Digital gift cards for everyone",
@@ -26,7 +28,7 @@ class PaymentWebScreen extends StatelessWidget {
           email: "rzp@gmail.com",
           contact: "9876543210",
         ),
-        colorhex: "#FF0000",
+        colorhex: "#33adff",
       ),
       onPaymentSuccess: (String paymentId) {
         debugPrint("Payment Success");
