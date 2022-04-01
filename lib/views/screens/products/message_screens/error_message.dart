@@ -30,8 +30,8 @@ class PaymentErrorMessageScreen extends StatelessWidget {
               clipper: DolDurmaClipper(bottom: 100, holeRadius: 40),
               child: Container(
                 margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
+                decoration:
+                    BoxDecoration(
                     borderRadius: BorderRadius.circular(10)),
                 padding: const EdgeInsets.all(20),
                 width: 500,
