@@ -83,3 +83,12 @@ extension EmailValidator on String {
         .hasMatch(this);
   }
 }
+
+
+extension DarkMode on BuildContext {
+  /// is dark mode currently enabled?
+  bool isDarkMode() {
+    final brightness = MediaQuery.of(this).platformBrightness;
+    return brightness == Brightness.dark;
+  }
+}

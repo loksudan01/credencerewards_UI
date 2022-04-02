@@ -55,7 +55,7 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
                     ),
                     const SizedBox(height: 50),
                     const Text(
-                      'Redeem your Credence Voucher',
+                      'Enter code to redeem your voucher',
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,

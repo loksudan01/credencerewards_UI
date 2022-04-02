@@ -38,6 +38,7 @@ class _LifeStyleQuantityScreenState extends State<LifeStyleQuantityScreen> {
                 margin: const EdgeInsets.all(10),
                 decoration:
                     BoxDecoration(
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
                 padding: const EdgeInsets.all(20),
                 width: 500,
