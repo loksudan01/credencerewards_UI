@@ -50,7 +50,7 @@ class PaymentSuccessMessageScreen extends StatelessWidget {
                             fontSize: 30.0, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 25.0),
                     const Text(
-                      'You will receive your voucher via email & SMS.',
+                      'You will receive your voucher via Email & SMS.',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 16.0),
                     ),

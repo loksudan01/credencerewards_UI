@@ -1,14 +1,18 @@
 import 'package:cr_rewards_flutter/controllers/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../message_screens/success_message.dart';
 import 'axis_main_screen.dart';
 
-class UserDetailsForm extends StatelessWidget {
+class UserDetailsForm extends HookConsumerWidget {
   const UserDetailsForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _isButtonTapped = useState(false);
+    final _isAccepted = useState(false);
     return Center(
       child: Container(
         width: 500,
@@ -73,8 +77,10 @@ class UserDetailsForm extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Checkbox(value: false, onChanged: (value) {}),
-                const Text('I accept the terms and conditions')
+                Checkbox(value: false, onChanged: (value) {
+                  _isAccepted.value = !_isAccepted.value;
+                }),
+                const Text('I accept the terms and conditions *')
               ],
             ),
             const SizedBox(height: 50),

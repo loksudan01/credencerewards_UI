@@ -21,6 +21,7 @@ class _ChooseProviderState extends State<ChooseProvider> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   bool _tcChecked = false;
+  bool isButtonTapped = false;
 
   @override
   void dispose() {
@@ -189,13 +190,13 @@ class _ChooseProviderState extends State<ChooseProvider> {
                                     launchURL(
                                         'https://credencerewards.com/terms-and-conditions');
                                   },
-                                text: 'terms and conditions',
+                                text: 'terms and conditions *',
                                 style: TextStyle(color: Colors.blue.shade900),
                               ),
                             ],
                           ),
                         ),
-                        subtitle: !_tcChecked
+                        subtitle: !_tcChecked && isButtonTapped
                             ? const Padding(
                                 padding: EdgeInsets.fromLTRB(12.0, 0, 0, 0),
                                 child: Text(
@@ -219,6 +220,9 @@ class _ChooseProviderState extends State<ChooseProvider> {
                         ),
                         child: TextButton(
                           onPressed: () {
+                            setState(() {
+                              isButtonTapped = true;
+                            });
                             formSubmitFunction(
                                 formKey: _formKey,
                                 submitFunction: () {
