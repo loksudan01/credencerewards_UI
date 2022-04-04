@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,16 +11,26 @@ final lifestyleApiProvider = Provider<LifestyleApiControllers>((ref) {
 });
 
 class LifestyleApiControllers {
-  Future createLifestyleOrder(Map form) async {
-    // try {
+  Future initLifestyleOrder(Map form) async {
+    debugPrint(json.encode(form));
+    
     var response =
-        await http.post(Uri.parse(baseUrl + 'lifeStyle/addUser'), body: form);
-    log(response.body);
+        await http
+        .post(Uri.http(baseUrl, '/api/lifestyle/order/init'), body: form);
+    debugPrint(response.body);
 
     var data = json.decode(response.body);
     return data;
-    // } catch (e) {
-    //   return e;
-    // }
+  }
+
+  Future addOrderItems(Map form) async {
+    debugPrint(json.encode(form));
+
+    var response = await http
+        .post(Uri.http(baseUrl, '/api/lifestyle/order/additems'), body: form);
+    debugPrint(response.body);
+
+    var data = json.decode(response.body);
+    return data;
   }
 }
