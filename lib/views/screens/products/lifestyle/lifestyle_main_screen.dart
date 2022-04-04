@@ -1,38 +1,31 @@
+import 'package:cr_rewards_flutter/controllers/api_controllers/lifestyle_api_controllers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:cr_rewards_flutter/controllers/controllers.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../../../controllers/providers/lifestyle_providers.dart';
 import '../../../../controllers/routes.dart';
 import '../../../widgets/common_sections.dart';
 import '../axis/axis_main_screen.dart';
 import 'lifestyle_quantity_screen.dart';
 
-class LifestyleMainPage extends StatefulWidget {
-  const LifestyleMainPage({Key? key}) : super(key: key);
-
-  @override
-  State<LifestyleMainPage> createState() => _LifestyleMainPageState();
-}
-
-class _LifestyleMainPageState extends State<LifestyleMainPage> {
+class LifestyleMainPage extends HookConsumerWidget {
+  LifestyleMainPage({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  bool _tcChecked = false;
+ 
 
+  
   @override
-  void dispose() {
-    super.dispose();
-    _nameController.dispose();
-    _emailController.dispose();
-    _phoneController.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _nameController = useTextEditingController();
+    final _emailController = useTextEditingController();
+    final _phoneController = useTextEditingController();
+    final _tcChecked = useState(false);
     return WillPopScope(
       onWillPop: () async {
         Navigator.pushNamedAndRemoveUntil(
@@ -136,11 +129,10 @@ class _LifestyleMainPageState extends State<LifestyleMainPage> {
                       const SizedBox(height: 20),
                       ListTile(
                         leading: Checkbox(
-                          value: _tcChecked,
+                          value: _tcChecked.value,
                           onChanged: (value) {
-                            setState(() {
-                              _tcChecked = !_tcChecked;
-                            });
+                            _tcChecked.value = !_tcChecked.value;
+                            
                             if (value == true) {}
                           },
                         ),
@@ -161,7 +153,7 @@ class _LifestyleMainPageState extends State<LifestyleMainPage> {
                             ],
                           ),
                         ),
-                        subtitle: !_tcChecked
+                        subtitle: !_tcChecked.value
                             ? const Padding(
                                 padding: EdgeInsets.fromLTRB(12.0, 0, 0, 0),
                                 child: Text(
@@ -184,23 +176,40 @@ class _LifestyleMainPageState extends State<LifestyleMainPage> {
                         ),
                         child: TextButton(
                           onPressed: () {
-                            if (kDebugMode) {
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return const LifeStyleQuantityScreen();
-                              }));
-                            } else {
+                            // if (kDebugMode) {
+                            //   Navigator.pushReplacement(context,
+                            //       MaterialPageRoute(builder: (context) {
+                            //     return const LifeStyleQuantityScreen();
+                            //   }));
+                            // } else {
                               formSubmitFunction(
                                   formKey: _formKey,
-                                  submitFunction: () {
-                                    if (_tcChecked) {
+                                submitFunction: () async {
+                                  if (_tcChecked.value) {
+                                    Map form = {
+                                      "name": _nameController.text,
+                                      "email": _emailController.text,
+                                      "mobile": _nameController.text
+                                    };
+
+                                    await ref
+                                        .read(lifestyleApiProvider)
+                                        .createLifestyleOrder(form);
+                                    var response = ref
+                                        .read(lifestyleChangeNotifier)
+                                        .createOrderResponse;
+
+                                    if (response?["status"] == 200) {
+                                      Fluttertoast.showToast(
+                                          msg: response?["message"]);
                                       Navigator.pushReplacement(context,
                                           MaterialPageRoute(builder: (context) {
                                         return const LifeStyleQuantityScreen();
                                       }));
                                     }
+                                  }
                                   });
-                            }
+                            // }
                           },
                           style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(

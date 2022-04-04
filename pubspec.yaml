@@ -41,18 +41,17 @@ dependencies:
   # C
   cupertino_icons: ^1.0.2
 
-  # D
-  dio: ^4.0.4
-
   # E
   email_validator: ^2.0.1
   flutter_easyloading: ^3.0.3
 
   # F
   fluttertoast: ^8.0.9
+  flutter_hooks: ^0.18.2+1
 
   # H
-  # http: ^0.13.4
+  http: ^0.13.4
+  hooks_riverpod: ^1.0.3
 
   # M
   mobile_scanner: ^1.0.0

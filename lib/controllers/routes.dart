@@ -46,7 +46,7 @@ class AppRouter {
         );
       case AppRoutes.lifeStyle:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => const LifestyleMainPage(),
+          builder: (_) => LifestyleMainPage(),
           settings: settings,
           fullscreenDialog: true,
         );
