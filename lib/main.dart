@@ -18,9 +18,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Credence Rewards - Digital gift cards for everyone',
-      theme: ThemeData.light(),
-      themeMode: ThemeMode.light,
-      darkTheme: ThemeData(brightness: Brightness.light),
+      theme: ThemeData(),
+      themeMode: ThemeMode.system,
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.black,
+        inputDecorationTheme: const InputDecorationTheme(
+          labelStyle: TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: Colors.grey),
+        ),
+      ),
       builder: EasyLoading.init(),
       onGenerateRoute: (settings) => AppRouter.onGenerateRoute(settings),
       // home: const LandingScreen(),
