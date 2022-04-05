@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../models/lifestyle/order_process_model.dart';
 import '../api_controllers/lifestyle_api_controllers.dart';
 
-final sectionStateProvider = StateProvider<int>((ref) => 0);
+final lifestyleProcessStateProvider = StateProvider<LifestyleOrderProcessModel>(
+    (ref) => LifestyleOrderProcessModel(
+          processId: '',
+          totalAmount: '',
+          orderId: '',
+          paymentId: '',
+          status: '',
+        ));
 
+final verifyLifestylePaymentFutureProvider =
+    FutureProvider.autoDispose.family((ref, String id) async {
+  final apiService = ref.read(lifestyleApiProvider);
+  return apiService.verifyPayment(id);
+});
 
 final lifestyleChangeNotifier =
     ChangeNotifierProvider<LifeStyleChangeNotifier>((ref) {
@@ -24,14 +37,13 @@ class LifeStyleChangeNotifier extends ChangeNotifier {
   dynamic initOrderResponse;
   dynamic addOrderItemsResponse;
 
-
   Future createOrder(Map formData) async {
     try {
       isLoading = true;
       notifyListeners();
       initOrderResponse = await repo!.initLifestyleOrder(formData);
     } catch (e) {
-      rethrow;
+      error = e;
     } finally {
       isLoading = false;
       notifyListeners();
@@ -44,7 +56,7 @@ class LifeStyleChangeNotifier extends ChangeNotifier {
       notifyListeners();
       addOrderItemsResponse = await repo!.addOrderItems(formData);
     } catch (e) {
-      rethrow;
+      error = e;
     } finally {
       isLoading = false;
       notifyListeners();

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,26 +12,43 @@ final lifestyleApiProvider = Provider<LifestyleApiControllers>((ref) {
 });
 
 class LifestyleApiControllers {
+
   Future initLifestyleOrder(Map form) async {
     debugPrint(json.encode(form));
     
     var response =
         await http
-        .post(Uri.http(baseUrl, '/api/lifestyle/order/init'), body: form);
+        .post(
+        Uri.http(baseUrl, '/api/lifestyle/order/init'),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(form));
     debugPrint(response.body);
 
-    var data = json.decode(response.body);
+    var data = jsonDecode(response.body);
     return data;
   }
 
   Future addOrderItems(Map form) async {
-    debugPrint(json.encode(form));
-
+    log(jsonEncode(form));
     var response = await http
-        .post(Uri.http(baseUrl, '/api/lifestyle/order/additems'), body: form);
+        .post(
+        Uri.http(baseUrl, '/api/lifestyle/order/additems'),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(form));
     debugPrint(response.body);
 
-    var data = json.decode(response.body);
+    var data = jsonDecode(response.body);
+    return data;
+  }
+
+  Future verifyPayment(String id) async {
+    var response = await http.get(
+      Uri.http(baseUrl, '/api/lifestyle/order/verify/$id'),
+      headers: {"Content-Type": "application/json"},
+    );
+    debugPrint(response.body);
+
+    var data = jsonDecode(response.body);
     return data;
   }
 }

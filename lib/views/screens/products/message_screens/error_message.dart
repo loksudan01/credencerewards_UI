@@ -1,3 +1,4 @@
+import 'package:cr_rewards_flutter/controllers/controllers.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -32,7 +33,7 @@ class PaymentErrorMessageScreen extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                      color: Theme.of(context).scaffoldBackgroundColor,
+                      color: context.isDarkMode() ? Colors.black : Colors.white,
                       borderRadius: BorderRadius.circular(10)),
                   padding: const EdgeInsets.all(20),
                   width: 500,

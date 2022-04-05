@@ -42,7 +42,7 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                      color: Theme.of(context).scaffoldBackgroundColor,
+                      color: context.isDarkMode() ? Colors.black : Colors.white,
                       borderRadius: BorderRadius.circular(10)),
                   padding: const EdgeInsets.all(20),
                   width: 500,

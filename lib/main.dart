@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.black,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: Colors.blueGrey.shade900,
         inputDecorationTheme: const InputDecorationTheme(
           labelStyle: TextStyle(color: Colors.white),
           hintStyle: TextStyle(color: Colors.grey),
@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
       // home: const LandingScreen(),
       initialRoute: AppRoutes.landingPage,
       // home: const ConsoleNavigationScreen(),
-
     );
   }
 }

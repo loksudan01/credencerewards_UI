@@ -1,10 +1,13 @@
+import 'package:cr_rewards_flutter/controllers/controllers.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../controllers/providers/lifestyle_providers.dart';
 import '../../../widgets/custom_clipper.dart';
 
-class PaymentSuccessMessageScreen extends StatelessWidget {
+class PaymentSuccessMessageScreen extends HookConsumerWidget {
   final String companyImage;
   final String route;
   const PaymentSuccessMessageScreen(
@@ -12,7 +15,7 @@ class PaymentSuccessMessageScreen extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return WillPopScope(
       onWillPop: () async {
         Navigator.pushNamedAndRemoveUntil(
@@ -32,7 +35,7 @@ class PaymentSuccessMessageScreen extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                      color: Theme.of(context).scaffoldBackgroundColor,
+                      color: context.isDarkMode() ? Colors.black : Colors.white,
                       borderRadius: BorderRadius.circular(10)),
                   padding: const EdgeInsets.all(20),
                   width: 500,
@@ -53,6 +56,12 @@ class PaymentSuccessMessageScreen extends StatelessWidget {
                         'You will receive your voucher via Email & SMS.',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 16.0),
+                      ),
+                      const SizedBox(height: 10.0),
+                      Text(
+                        '#${ref.read(lifestyleProcessStateProvider).paymentId!}',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 14.0),
                       ),
                       const SizedBox(height: 30.0),
                       const Divider(),
