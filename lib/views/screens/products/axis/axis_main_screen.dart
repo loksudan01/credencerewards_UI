@@ -211,6 +211,7 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
                 child: Container(
                   width: 150,
                   height: 40,
+                  margin: EdgeInsets.only(right: 25.0),
                   decoration: BoxDecoration(
                     color: kAxisBankPrimaryColor,
                     borderRadius: BorderRadius.circular(
