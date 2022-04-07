@@ -1,10 +1,16 @@
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'controllers/routes.dart';
 
+void configureApp() {
+  setUrlStrategy(PathUrlStrategy());
+}
+
 void main() {
+  configureApp();
   runApp(const ProviderScope(child: MyApp()));
 }
 
