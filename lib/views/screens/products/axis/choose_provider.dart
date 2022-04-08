@@ -10,6 +10,7 @@ import '../../../responsive_layout.dart';
 import '../message_screens/success_message.dart';
 import 'axis_app_bar.dart';
 import 'axis_bank_drawer.dart';
+import 'axis_submit_button.dart';
 
 class ChooseProvider extends StatefulWidget {
   const ChooseProvider({Key? key}) : super(key: key);
@@ -55,25 +56,30 @@ final GlobalKey<ScaffoldState> _axisProviderKey = GlobalKey();
         Stack(
           alignment: Alignment.topLeft,
           children: [
-            Image.asset('assets/images/flipkart-card.png', width: 300),
+            Image.asset('assets/images/flipkart-card.png',
+                width: ResponsiveLayout.isNotMobile(context) ? 400 : 300),
             Positioned(
               top: 20,
-              left: 10,
+              left: ResponsiveLayout.isNotMobile(context) ? 20 : 10,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text('Gift Card Value',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic,
-                          fontSize: 12.0)),
+                          fontSize: ResponsiveLayout.isNotMobile(context)
+                              ? 16
+                              : 12.0)),
                   Text('₹500',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic,
-                          fontSize: 16.0)),
+                          fontSize: ResponsiveLayout.isNotMobile(context)
+                              ? 20
+                              : 16.0)),
                 ],
               ),
             )
@@ -210,17 +216,9 @@ final GlobalKey<ScaffoldState> _axisProviderKey = GlobalKey();
             const SizedBox(height: 30),
             Align(
               alignment: Alignment.centerRight,
-              child: Container(
-                width: 150,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: const Color.fromRGBO(138, 35, 77, 1),
-                  borderRadius: BorderRadius.circular(
-                    5.0,
-                  ),
-                ),
-                child: TextButton(
-                  onPressed: () {
+                child: AxisSubmitButton(
+                  title: 'Proceed',
+                  onTap: () {
                     setState(() {
                       isButtonTapped = true;
                     });
@@ -237,18 +235,10 @@ final GlobalKey<ScaffoldState> _axisProviderKey = GlobalKey();
                             }));
                           }
                         });
+                  
                   },
-                  style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                  ),
-                  child: Text(
-                    'SUBMIT',
-                    style: whiteTextStyle.copyWith(fontSize: 16),
-                  ),
-                ),
-              ),
+                )
+             
             ),
           ],
         ),
@@ -288,7 +278,9 @@ final GlobalKey<ScaffoldState> _axisProviderKey = GlobalKey();
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(
+                          height:
+                              ResponsiveLayout.isNotMobile(context) ? 20 : 10),
                       Text(
                         'Please fill in the below details to receive your voucher.',
                         textAlign: TextAlign.center,

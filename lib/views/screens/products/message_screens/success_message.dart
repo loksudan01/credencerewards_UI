@@ -44,7 +44,10 @@ final GlobalKey<ScaffoldState> _axisSuccessKey = GlobalKey();
                                   ? 30
                                   : 26.0,
                               fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 25.0),
+                      SizedBox(
+                          height: ResponsiveLayout.isNotMobile(context)
+                              ? 35
+                              : 25.0),
                       Text(
                         'You will receive your voucher via Email & SMS.',
                         textAlign: TextAlign.center,
@@ -53,7 +56,10 @@ final GlobalKey<ScaffoldState> _axisSuccessKey = GlobalKey();
                                 ? 20
                                 : 16.0),
                       ),
-                      const SizedBox(height: 10.0),
+                      SizedBox(
+                          height: ResponsiveLayout.isNotMobile(context)
+                              ? 20
+                              : 10.0),
                       Text(
                         // '#${ref.read(lifestyleProcessStateProvider).paymentId!}',
                         '#axis_cr_rw_0232212398',
