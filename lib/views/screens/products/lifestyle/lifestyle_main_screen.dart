@@ -9,8 +9,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../controllers/providers/lifestyle_providers.dart';
 import '../../../../controllers/routes.dart';
+import '../../../constants.dart';
 import '../../../widgets/common_sections.dart';
-import '../axis/axis_main_screen.dart';
 import 'lifestyle_quantity_screen.dart';
 
 class LifestyleMainPage extends HookConsumerWidget {

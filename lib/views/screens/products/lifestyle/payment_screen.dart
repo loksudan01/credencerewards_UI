@@ -42,7 +42,7 @@ class PaymentWebScreen extends HookConsumerWidget {
           log(paymentId);
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) {
-            return const PaymentSuccessMessageScreen(
+            return PaymentSuccessMessageScreen(
               companyImage: 'assets/images/lifestyle.webp',
               route: AppRoutes.lifeStyle,
             );

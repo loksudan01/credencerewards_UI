@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 
 import '../../../../controllers/controllers.dart';
 import '../../../constants.dart';
+import 'axis_app_bar.dart';
+import 'axis_bank_drawer.dart';
 import 'choose_provider.dart';
 
 class AxisMainScreen extends StatefulWidget {
@@ -17,10 +19,15 @@ class AxisMainScreen extends StatefulWidget {
 class _AxisMainScreenState extends State<AxisMainScreen> {
   final _formKey = GlobalKey<FormState>();
   bool isError = false;
-  final TextEditingController _code1Controller = TextEditingController();
-  final TextEditingController _code2Controller = TextEditingController();
-  final TextEditingController _code3Controller = TextEditingController();
-  final TextEditingController _code4Controller = TextEditingController();
+  final TextEditingController _code1Controller =
+      TextEditingController(text: 'XXXX');
+  final TextEditingController _code2Controller =
+      TextEditingController(text: 'XXXX');
+  final TextEditingController _code3Controller =
+      TextEditingController(text: 'XXXX');
+  final TextEditingController _code4Controller =
+      TextEditingController(text: 'XXXX');
+      
 
 
   @override
@@ -43,15 +50,18 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
               horizontal: ResponsiveLayout.isNotMobile(context) ? 125 : 10,
               vertical: 20.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: ResponsiveLayout.isMobile(context) ||
+                    ResponsiveLayout.isTablet(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: 50),
-              const Text(
+              Text(
                 'Enter code to redeem your voucher',
                 style: TextStyle(
-                  fontSize: 24.0,
+                  fontSize: ResponsiveLayout.isNotMobile(context) ? 24.0 : 20.0,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -211,7 +221,7 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
                 child: Container(
                   width: 150,
                   height: 40,
-                  margin: EdgeInsets.only(right: 25.0),
+                  margin: const EdgeInsets.only(right: 25.0),
                   decoration: BoxDecoration(
                     color: kAxisBankPrimaryColor,
                     borderRadius: BorderRadius.circular(
@@ -266,52 +276,17 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
         ),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(70.0),
-          child: Container(
-            color: kAxisBankPrimaryColor,
-            padding: EdgeInsets.symmetric(
-                vertical: 15.0,
-                horizontal:
-                    ResponsiveLayout.isNotMobile(context) ? 125.0 : 10.0),
-            child: Row(
-              children: [
-                Image.asset(
-                  'assets/images/axis-white.png',
-                  height: 50.0,
-                ),
-                const Spacer(),
-                ResponsiveLayout.isNotMobile(context)
-                    ? Row(
-                        children: [
-                          TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Contact Support',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                          TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Terms & Conditions',
-                                style: TextStyle(color: Colors.white),
-                              ))
-                        ],
-                      )
-                    : IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.menu,
-                          color: Colors.white,
-                        )),
-              ],
-            ),
+          child: AxisAppBar(
+            onPressed: () {
+              _axisMainKey.currentState!.openDrawer();
+            },
           ),
         ),
+        drawer: const AxisBankDrawer(),
+        key: _axisMainKey,
       ),
     );
   }
 }
+final GlobalKey<ScaffoldState> _axisMainKey = GlobalKey();
 
-TextStyle whiteTextStyle = const TextStyle(
-  fontWeight: FontWeight.w500,
-  color: Color(0xffFFFFFF),
-);

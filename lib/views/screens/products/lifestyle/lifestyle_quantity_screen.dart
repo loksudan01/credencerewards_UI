@@ -13,7 +13,7 @@ import 'package:number_inc_dec/number_inc_dec.dart';
 
 import '../../../../controllers/providers/lifestyle_providers.dart';
 import '../../../../controllers/routes.dart';
-import '../axis/axis_main_screen.dart';
+import '../../../constants.dart';
 import 'payment_screen.dart';
 
 class LifeStyleQuantityScreen extends HookConsumerWidget {

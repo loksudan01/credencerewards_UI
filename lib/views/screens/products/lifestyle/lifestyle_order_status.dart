@@ -24,7 +24,7 @@ class LifestyleOrderStatus extends HookConsumerWidget {
                     data?["status"];
               });
               if (data?["status"] == 'paid') {
-                return const PaymentSuccessMessageScreen(
+                return  PaymentSuccessMessageScreen(
                   companyImage: 'assets/images/lifestyle.webp',
                   route: AppRoutes.lifeStyle,
                 );

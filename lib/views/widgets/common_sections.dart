@@ -5,16 +5,13 @@ class CopyRightText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 10),
-        Text(
-          'Copyrights © ${DateTime.now().year}. All Rights Reserved by Credence Rewards',
-          style: const TextStyle(fontSize: 12.0, color: Colors.grey),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 10),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Text(
+        'Copyrights © ${DateTime.now().year}. All Rights Reserved by Credence Rewards',
+        style: const TextStyle(fontSize: 12.0, color: Colors.grey),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
