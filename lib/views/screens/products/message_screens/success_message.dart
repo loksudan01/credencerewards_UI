@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../responsive_layout.dart';
 import '../axis/axis_app_bar.dart';
 import '../axis/axis_bank_drawer.dart';
 
@@ -37,22 +38,31 @@ final GlobalKey<ScaffoldState> _axisSuccessKey = GlobalKey();
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text('Thank you',
+                      Text('Thank you',
                           style: TextStyle(
-                              fontSize: 30.0, fontWeight: FontWeight.bold)),
+                              fontSize: ResponsiveLayout.isNotMobile(context)
+                                  ? 30
+                                  : 26.0,
+                              fontWeight: FontWeight.bold)),
                       const SizedBox(height: 25.0),
-                      const Text(
+                      Text(
                         'You will receive your voucher via Email & SMS.',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16.0),
+                        style: TextStyle(
+                            fontSize: ResponsiveLayout.isNotMobile(context)
+                                ? 20
+                                : 16.0),
                       ),
                       const SizedBox(height: 10.0),
-                      const Text(
+                      Text(
                         // '#${ref.read(lifestyleProcessStateProvider).paymentId!}',
-                        '#s67hsgay7ua92hab',
+                        '#axis_cr_rw_0232212398',
 
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 14.0),
+                        style: TextStyle(
+                            fontSize: ResponsiveLayout.isNotMobile(context)
+                                ? 16
+                                : 14.0),
                       ),
                       const SizedBox(height: 30.0),
                       const Divider(),

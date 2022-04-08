@@ -50,10 +50,7 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
               horizontal: ResponsiveLayout.isNotMobile(context) ? 125 : 10,
               vertical: 20.0),
           child: Column(
-            crossAxisAlignment: ResponsiveLayout.isMobile(context) ||
-                    ResponsiveLayout.isTablet(context)
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -61,147 +58,139 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
               Text(
                 'Enter code to redeem your voucher',
                 style: TextStyle(
-                  fontSize: ResponsiveLayout.isNotMobile(context) ? 24.0 : 20.0,
+                  fontSize: ResponsiveLayout.isNotMobile(context) ? 26.0 : 20.0,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 50),
-              Align(
-                alignment: ResponsiveLayout.isNotMobile(context)
-                    ? Alignment.centerLeft
-                    : Alignment.center,
-                child: SizedBox(
-                  width: 320.0,
-                  child: Form(
-                    key: _formKey,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 65,
-                              child: TextFormField(
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(4),
-                                ],
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'XXXX',
-                                ),
-                                controller: _code1Controller,
-                                onChanged: (val) {
-                                  if (val.length == 4) {
-                                    FocusScope.of(context).nextFocus();
-                                  }
-                                },
+              SizedBox(
+                width: 320.0,
+                child: Form(
+                  key: _formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 65,
+                            child: TextFormField(
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(4),
+                              ],
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'XXXX',
                               ),
+                              controller: _code1Controller,
+                              onChanged: (val) {
+                                if (val.length == 4) {
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
                             ),
-                            Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 5.0),
-                              width: 10,
-                              child: const Divider(
-                                color: Colors.black,
+                          ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            width: 10,
+                            child: const Divider(
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 65,
+                            child: TextFormField(
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(4),
+                              ],
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'XXXX',
                               ),
+                              controller: _code2Controller,
+                              onChanged: (val) {
+                                if (val.length == 4) {
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
                             ),
-                            SizedBox(
-                              width: 65,
-                              child: TextFormField(
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(4),
-                                ],
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'XXXX',
-                                ),
-                                controller: _code2Controller,
-                                onChanged: (val) {
-                                  if (val.length == 4) {
-                                    FocusScope.of(context).nextFocus();
-                                  }
-                                },
+                          ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            width: 10,
+                            child: const Divider(
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 65,
+                            child: TextFormField(
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(4),
+                              ],
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'XXXX',
                               ),
+                              controller: _code3Controller,
+                              onChanged: (val) {
+                                if (val.length == 4) {
+                                  FocusScope.of(context).nextFocus();
+                                }
+                              },
                             ),
-                            Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 5.0),
-                              width: 10,
-                              child: const Divider(
-                                color: Colors.black,
+                          ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            width: 10,
+                            child: const Divider(
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 65,
+                            child: TextFormField(
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(4),
+                              ],
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'XXXX',
                               ),
+                              controller: _code4Controller,
+                              onChanged: (val) {
+                                if ((_code1Controller.text.length +
+                                        _code2Controller.text.length +
+                                        _code3Controller.text.length +
+                                        _code4Controller.text.length) !=
+                                    16) {
+                                  isError = true;
+                                } else {
+                                  isError = false;
+                                }
+                                if (val.length == 4) {
+                                  FocusScope.of(context).unfocus();
+                                }
+                              },
+                              validator: (text) {
+                                if ((_code1Controller.text.length +
+                                        _code2Controller.text.length +
+                                        _code3Controller.text.length +
+                                        _code4Controller.text.length) !=
+                                    16) {
+                                  isError = true;
+                                  return null;
+                                } else {
+                                  isError = false;
+                                  return null;
+                                }
+                              },
                             ),
-                            SizedBox(
-                              width: 65,
-                              child: TextFormField(
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(4),
-                                ],
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'XXXX',
-                                ),
-                                controller: _code3Controller,
-                                onChanged: (val) {
-                                  if (val.length == 4) {
-                                    FocusScope.of(context).nextFocus();
-                                  }
-                                },
-                              ),
-                            ),
-                            Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 5.0),
-                              width: 10,
-                              child: const Divider(
-                                color: Colors.black,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 65,
-                              child: TextFormField(
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(4),
-                                ],
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'XXXX',
-                                ),
-                                controller: _code4Controller,
-                                onChanged: (val) {
-                                  if ((_code1Controller.text.length +
-                                          _code2Controller.text.length +
-                                          _code3Controller.text.length +
-                                          _code4Controller.text.length) !=
-                                      16) {
-                                    isError = true;
-                                  } else {
-                                    isError = false;
-                                  }
-                                  if (val.length == 4) {
-                                    FocusScope.of(context).unfocus();
-                                  }
-                                },
-                                validator: (text) {
-                                  if ((_code1Controller.text.length +
-                                          _code2Controller.text.length +
-                                          _code3Controller.text.length +
-                                          _code4Controller.text.length) !=
-                                      16) {
-                                    isError = true;
-                                    return null;
-                                  } else {
-                                    isError = false;
-                                    return null;
-                                  }
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -210,14 +199,20 @@ class _AxisMainScreenState extends State<AxisMainScreen> {
                   width: 320.0,
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Text('Invalid voucher code'),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text(
+                        'Invalid voucher code',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
                   ),
                 ),
               const SizedBox(height: 30),
               Align(
-                alignment: ResponsiveLayout.isNotMobile(context)
-                    ? Alignment.centerLeft
-                    : Alignment.centerRight,
+                alignment: ResponsiveLayout.isMobile(context)
+                    ? Alignment.centerRight
+                    : Alignment.center,
                 child: Container(
                   width: 150,
                   height: 40,

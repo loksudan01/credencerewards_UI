@@ -52,19 +52,6 @@ final GlobalKey<ScaffoldState> _axisProviderKey = GlobalKey();
           : CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const Text(
-          'Congratulations!',
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
-        const Text(
-          'Please fill in the below details to receive your voucher.',
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 30),
         Stack(
           alignment: Alignment.topLeft,
           children: [
@@ -106,17 +93,17 @@ final GlobalKey<ScaffoldState> _axisProviderKey = GlobalKey();
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Your Details:',
-              style: TextStyle(
-                fontSize: ResponsiveLayout.isMobile(context) ||
-                        ResponsiveLayout.isTablet(context)
-                    ? 20.0
-                    : 24.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 30),
+            // Text(
+            //   'Your Details:',
+            //   style: TextStyle(
+            //     fontSize: ResponsiveLayout.isMobile(context) ||
+            //             ResponsiveLayout.isTablet(context)
+            //         ? 20.0
+            //         : 24.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
+            // const SizedBox(height: 30),
             TextFormField(
               keyboardType: TextInputType.name,
               inputFormatters: [
@@ -293,6 +280,24 @@ final GlobalKey<ScaffoldState> _axisProviderKey = GlobalKey();
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const SizedBox(height: 50.0),
+                      Text(
+                        'Congratulations!',
+                        style: TextStyle(
+                          fontSize:
+                              ResponsiveLayout.isNotMobile(context) ? 26 : 24.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        'Please fill in the below details to receive your voucher.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: ResponsiveLayout.isNotMobile(context)
+                                ? 18
+                                : 16),
+                      ),
+                      const SizedBox(height: 50),
                       ResponsiveLayout.isMobile(context) ||
                               ResponsiveLayout.isTablet(context)
                           ? Column(
@@ -313,7 +318,7 @@ final GlobalKey<ScaffoldState> _axisProviderKey = GlobalKey();
                               ],
                             )
                           : Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 cardWidget(context),
